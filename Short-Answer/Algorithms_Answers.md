@@ -12,8 +12,12 @@ c)
 The runtime complexity is O(nlogn). For each n, the rate of change of time to complete the function increases linearly.
 ## Exercise II
 
-For each floor f, drop an egg. If the egg does not break, increment the floor. If it breaks, that's the floor. Should only break one egg.
+Since we're trying to minimize dropped eggs, it's best to opt for a binary search. First, drop an egg at the halfway floor.
 
-Runtime complexity is O(n) because the amount of egg drop attempts is based on the number of floors needed to test.
+- If it breaks, the highest floor to not break an egg is lower.
+- If it doesn't break, the highest floor to not break an egg is higher.
+- No matter what, we elminate half the possible floors with this approach, which makes it more efficient than checking from the lowest floor.
 
+We then continue trying the midpoint of each segment of floors until we find the solution.
 
+The runtime complexity is O(logn) because although the more floors we have, the more checks necessary, the amount of checks relative to the number of floors decreases the more floors we have. This runtime complexity beats O(n).
